@@ -1,0 +1,229 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 40;
+}
+
+.sidebarHeader {
+  height: 64px;
+  padding: 0 var(--space-5);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  letter-spacing: -0.025em;
+}
+
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4) var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 0.875rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.navItem:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+}
+
+.navItem.active {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.navItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  background-color: var(--color-primary);
+  border-radius: 0 4px 4px 0;
+}
+
+.sidebarFooter {
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Topbar */
+.topbar {
+  height: 64px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  flex-shrink: 0;
+  z-index: 30;
+}
+
+.topbarLeft, .topbarRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.search {
+  position: relative;
+}
+
+.searchInput {
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  outline: none;
+  width: 320px;
+  font-size: 0.875rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.searchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary), var(--shadow-sm);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-tertiary);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.userProfile:hover {
+  background-color: var(--color-bg);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.userName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.userRole {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-transform: capitalize;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.iconButton:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+}
+
+/* Content Area */
+.contentArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6);
+  background-color: var(--color-bg);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .searchInput {
+    width: 180px;
+  }
+  
+  .topbar {
+    padding: 0 var(--space-4);
+  }
+  
+  .contentArea {
+    padding: var(--space-4);
+  }
+}

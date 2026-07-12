@@ -1,0 +1,157 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.header {
+  height: 72px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+[data-theme="dark"] .header {
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+.headerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  letter-spacing: -0.025em;
+}
+
+.logo span {
+  color: var(--color-text-main);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav a {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover, .nav a.active {
+  color: var(--color-text-main);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.main {
+  flex: 1;
+}
+
+.footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-10);
+  margin-top: auto;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-10);
+  margin-bottom: var(--space-10);
+}
+
+.footerBrand {
+  max-width: 300px;
+}
+
+.footerDesc {
+  margin-top: var(--space-4);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.footerLinks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.linkGroup h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-4);
+}
+
+.linkGroup a {
+  display: block;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: var(--space-3);
+  transition: color 0.2s ease;
+}
+
+.linkGroup a:hover {
+  color: var(--color-primary);
+}
+
+.footerBottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .headerContainer {
+    padding: 0 var(--space-4);
+  }
+  
+  .nav {
+    display: none; /* In a real app we'd add a mobile menu */
+  }
+  
+  .footerContainer {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .footerLinks {
+    grid-template-columns: 1fr 1fr;
+  }
+}
